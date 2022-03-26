@@ -1,0 +1,49 @@
+{
+  "name": "postcss-px-to-viewport",
+  "version": "0.0.0",
+  "description": "CSS post-processor that converts px to viewport units (vw, vh, vmin, vmax).",
+  "keywords": ["postcss", "css", "postcss-plugin", "postcss-px-to-viewport"],
+  "scripts": {
+    "test": "jest --coverage",
+    "eslint": "eslint ."
+  },
+  "author": "tcstory <tcstory@163.com>",
+  "license": "MIT",
+  "repository": "tcstory/postcss-px-to-viewport",
+  "files": [
+    "lib/"
+  ],
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "peerDependencies": {
+    "postcss": "^8.3.0"
+  },
+  "devDependencies": {
+    "clean-publish": "^3.4.2",
+    "eslint": "^8.0.1",
+    "eslint-plugin-jest": "^25.2.2",
+    "jest": "^27.3.1",
+    "postcss": "^8.3.11"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 2017
+    },
+    "env": {
+      "node": true,
+      "es6": true
+    },
+    "extends": ["eslint:recommended", "plugin:jest/recommended"],
+    "rules": {
+      "jest/expect-expect": "off"
+    }
+  },
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "statements": 100
+      }
+    }
+  }
+}
