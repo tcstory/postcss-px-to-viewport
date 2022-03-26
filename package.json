@@ -1,6 +1,6 @@
 {
-  "name": "postcss-px-to-viewport",
-  "version": "0.0.0",
+  "name": "@tcstory/postcss-px-to-viewport",
+  "version": "0.1.0",
   "description": "CSS post-processor that converts px to viewport units (vw, vh, vmin, vmax).",
   "keywords": ["postcss", "css", "postcss-plugin", "postcss-px-to-viewport"],
   "scripts": {
