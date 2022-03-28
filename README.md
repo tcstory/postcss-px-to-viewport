@@ -172,7 +172,7 @@ add to your `postcss.config.js`
 module.exports = {
   plugins: {
     // ...
-    'postcss-px-to-viewport': {
+    "@tcstory/postcss-px-to-viewport": {
       // options
     }
   }
@@ -193,10 +193,6 @@ $ npm run test
 ## Changelog
 
 The changelog is [here](CHANGELOG.md).
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/evrone/postcss-px-to-viewport/tags).
 
 ## License
 
