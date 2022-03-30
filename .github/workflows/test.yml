@@ -17,5 +17,7 @@ jobs:
           node-version: 16
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
+        with:
+          useLockFile: false
       - name: Run tests
         run: npm run test
