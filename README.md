@@ -1,5 +1,7 @@
 # postcss-px-to-viewport
 
+[![codecov](https://codecov.io/gh/tcstory/postcss-px-to-viewport/branch/master/graph/badge.svg?token=P5WRPADXRM)](https://codecov.io/gh/tcstory/postcss-px-to-viewport)
+
 English
 
 A plugin for [PostCSS](https://github.com/postcss/postcss) that generates viewport units (vw, vh, vmin, vmax) from pixel units.
