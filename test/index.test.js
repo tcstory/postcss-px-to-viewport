@@ -546,7 +546,7 @@ describe('/* px-to-viewport-ignore */ & /* px-to-viewport-ignore-next */', funct
 
 describe('override options from comment', function () {
   it('should change viewportWidth', function () {
-    const input = `\
+    const input = `
     /* px-to-viewport-define viewportWidth=375 */
     .rule {
       font-size: 15px;
@@ -556,7 +556,7 @@ describe('override options from comment', function () {
       padding: 20px;
     }
     `.trim();
-    const output = `\
+    const output = `
     /* px-to-viewport-define viewportWidth=375 */
     .rule {
       font-size: 4vw;

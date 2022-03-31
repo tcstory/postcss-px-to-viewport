@@ -167,6 +167,26 @@ Example:
 There are several more reasons why your pixels may not convert, the following options may affect this:
 `propList`, `selectorBlackList`, `minPixelValue`, `mediaQuery`, `exclude`, `include`.
 
+#### Overriding
+
+you can use special comments for overriding some options in a css file.
+the current supported options are as follows:
+
+1. landscapeWidth
+2. viewportWidth
+
+Example:
+
+```css
+/* px-to-viewport-define landscapeWidth=600, viewportWidth=480 */
+.rule {
+  font-size: 15px;
+  height: 50px;
+}
+```
+
+the special comments must be put in the first line of the css file.
+
 #### Use with PostCss configuration file
 
 add to your `postcss.config.js`
