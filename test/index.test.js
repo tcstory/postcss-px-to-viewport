@@ -521,25 +521,139 @@ describe('landscape', function () {
   });
 });
 
-describe('/* px-to-viewport-ignore */ & /* px-to-viewport-ignore-next */', function() {
-  it('should ignore right-commented', function() {
+describe('/* px-to-viewport-ignore */ & /* px-to-viewport-ignore-next */', function () {
+  it('should ignore right-commented', function () {
     const input = '.rule { font-size: 15px; /* simple comment */ width: 100px; /* px-to-viewport-ignore */ height: 50px; }';
     const output = '.rule { font-size: 4.6875vw; /* simple comment */ width: 100px; height: 15.625vw; }';
 
     return run(input, output)
   });
 
-  it('should ignore right-commented in multiline-css', function() {
+  it('should ignore right-commented in multiline-css', function () {
     const input = '.rule {\n  font-size: 15px;\n  width: 100px; /*px-to-viewport-ignore*/\n  height: 50px;\n}';
     const output = '.rule {\n  font-size: 4.6875vw;\n  width: 100px;\n  height: 15.625vw;\n}';
 
     return run(input, output)
   });
 
-  it('should ignore before-commented in multiline-css', function() {
+  it('should ignore before-commented in multiline-css', function () {
     const input = '.rule {\n  font-size: 15px;\n  /*px-to-viewport-ignore-next*/\n  width: 100px;\n  /*px-to-viewport-ignore*/\n  height: 50px;\n}';
     const output = '.rule {\n  font-size: 4.6875vw;\n  width: 100px;\n  /*px-to-viewport-ignore*/\n  height: 15.625vw;\n}';
 
     return run(input, output)
   });
 });
+
+describe('override options from comment', function () {
+  it('should change viewportWidth', function () {
+    const input = `\
+    /* px-to-viewport-define viewportWidth=375 */
+    .rule {
+      font-size: 15px;
+      height: 50px;
+    }
+    .test {
+      padding: 20px;
+    }
+    `.trim();
+    const output = `\
+    /* px-to-viewport-define viewportWidth=375 */
+    .rule {
+      font-size: 4vw;
+      height: 13.33333vw;
+    }
+    .test {
+      padding: 5.33333vw;
+    }
+    `.trim();
+
+    return run(input, output)
+  });
+
+  it('the comment must be on the first line', function () {
+    const input = `
+    .rule {
+      font-size: 15px;
+      height: 50px;
+    }
+    /* px-to-viewport-define viewportWidth=375 */
+    .test {
+      padding: 20px;
+    }
+    `.trim();
+
+    const output = `
+    .rule {
+      font-size: 4.6875vw;
+      height: 15.625vw;
+    }
+    /* px-to-viewport-define viewportWidth=375 */
+    .test {
+      padding: 6.25vw;
+    }
+    `.trim();
+
+    return run(input, output)
+  });
+
+  it('should change landscapeWidth', function () {
+    const input = `
+    /* px-to-viewport-define landscapeWidth=600 */
+    .rule {
+      font-size: 15px;
+      height: 50px;
+    }
+    .test {
+      padding: 20px;
+    }
+    `.trim();
+    const output = `
+    /* px-to-viewport-define landscapeWidth=600 */
+    .rule {
+      font-size: 4.6875vw;
+      height: 15.625vw;
+    }
+    .test {
+      padding: 6.25vw;
+    }
+    `.trim();
+
+    return run(input, output)
+  });
+
+
+  it('should works with landscape option', function () {
+    const input = `
+    /* px-to-viewport-define landscapeWidth=600 */
+    .rule {
+      font-size: 15px;
+      height: 50px;
+    }
+    .test {
+      padding: 20px;
+    }
+    `.trim();
+    const output = `
+    /* px-to-viewport-define landscapeWidth=600 */
+    .rule {
+      font-size: 4.6875vw;
+      height: 15.625vw;
+    }
+    .test {
+      padding: 6.25vw;
+    }
+    @media (orientation: landscape) {
+    .rule {
+      font-size: 2.5vw;
+      height: 8.33333vw;
+    }
+    .test {
+      padding: 3.33333vw;
+    }
+}`.trim();
+
+    return run(input, output, {
+      landscape: true
+    })
+  });
+})
