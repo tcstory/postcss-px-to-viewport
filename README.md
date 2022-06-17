@@ -185,8 +185,6 @@ Example:
 }
 ```
 
-the special comments must be put in the first line of the css file.
-
 #### Use with PostCss configuration file
 
 add to your `postcss.config.js`

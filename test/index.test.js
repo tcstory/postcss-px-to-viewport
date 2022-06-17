@@ -570,7 +570,7 @@ describe('override options from comment', function () {
     return run(input, output)
   });
 
-  it('the comment must be on the first line', function () {
+  it('the comment do not need to be on the first line', function () {
     const input = `
     .rule {
       font-size: 15px;
@@ -589,7 +589,7 @@ describe('override options from comment', function () {
     }
     /* px-to-viewport-define viewportWidth=375 */
     .test {
-      padding: 6.25vw;
+      padding: 5.33333vw;
     }
     `.trim();
 
